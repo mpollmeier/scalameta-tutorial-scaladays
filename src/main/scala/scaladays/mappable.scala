@@ -6,7 +6,10 @@ import scala.meta._
 
 class mappable extends StaticAnnotation {
   inline def apply(defn: Any): Any = meta {
-    println(defn.getClass)
-    defn
+    defn match {
+      case clazz: Defn.Class =>
+        println(clazz)
+        defn
+    }
   }
 }
