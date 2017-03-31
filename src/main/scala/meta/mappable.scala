@@ -4,10 +4,12 @@ import scala.annotation.StaticAnnotation
 import scala.collection.immutable.Seq
 import scala.meta._
 
-
 class mappable extends StaticAnnotation {
   inline def apply(defn: Any): Any = meta {
-    println(defn + " of " + defn.getClass)
-    defn
+    defn match {
+      case clazz: Defn.Class =>
+        println(clazz)
+        defn
+    }
   }
 }
