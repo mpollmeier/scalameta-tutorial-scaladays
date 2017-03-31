@@ -7,6 +7,7 @@ import scala.meta._
 
 class mappable extends StaticAnnotation {
   inline def apply(defn: Any): Any = meta {
+    println(defn + " of " + defn.getClass)
     defn
   }
 }
