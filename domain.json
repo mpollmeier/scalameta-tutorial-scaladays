@@ -1,0 +1,4 @@
+{
+  "customer":[{"name":"string"},{"yearOfBirth":"int"}],
+  "item":[{"diameter":"int"},{"weight":"int"}]
+}
