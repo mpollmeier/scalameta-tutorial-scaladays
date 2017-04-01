@@ -17,5 +17,5 @@ import scaladays._
 
 object Usage extends App {
   val c = Customer(5, "a string")
-  println("hello scaladays")
+  println(Customer.toMap.apply(c))
 }
