@@ -8,8 +8,19 @@ class mappable extends StaticAnnotation {
   inline def apply(defn: Any): Any = meta {
     defn match {
       case clazz: Defn.Class =>
-        println(clazz)
-        defn
+        val typeName = clazz.name
+        val termName = Term.Name(typeName.value)
+        val companion = q"""
+          object $termName
+        """
+
+        val result = q"""
+          $companion
+          $clazz
+        """
+
+        println(result)
+        result
     }
   }
 }

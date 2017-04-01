@@ -18,5 +18,6 @@ import meta._
 // class E(@mappable i: Int)
 
 object Usage extends App {
+  val c = Customer(5, "a string")
   println("hello scaladays")
 }
