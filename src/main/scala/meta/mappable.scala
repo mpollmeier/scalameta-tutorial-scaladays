@@ -16,7 +16,7 @@ class mappable extends StaticAnnotation {
         val termName = Term.Name(typeName.value)
         val params = clazz.ctor.paramss.flatten
 
-        val toMapKeyValues = params.map { param =>
+        val toMapKeyValues: Seq[Term.Arg] = params.map { param =>
           val paramName: String = param.name.value
           q"($paramName -> instance.${Term.Name(paramName)})"
         }
@@ -24,7 +24,7 @@ class mappable extends StaticAnnotation {
         val companion = q"""
           object $termName {
             import meta.ToMap
-            implicit def toMap() = new ToMap[$typeName] {
+            def toMap = new ToMap[$typeName] {
               override def apply(instance: $typeName) = Map(..$toMapKeyValues)
             }
           }
